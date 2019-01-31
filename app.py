@@ -16,7 +16,7 @@ class Response(object):
         return {'error': self.error, 'msg': self.msg, 'data': self.data}
 
 
-@app.route('/api/v1/stations/<string:stop_type>/<int:number>/')
+@app.route('/api/v1/stations/<string:stop_type>/<string:number>/')
 def get_stations(stop_type, number):
     if stop_type not in ['up', 'down']:
         return jsonify(Response(error=1, msg='stop type error').dumps())
@@ -25,7 +25,7 @@ def get_stations(stop_type, number):
     return jsonify(Response(error=0, msg='', data=stations).dumps())
 
 
-@app.route('/api/v1/stops/<string:stop_type>/<int:number>/')
+@app.route('/api/v1/stops/<string:stop_type>/<string:number>/')
 def get_stops(stop_type, number):
     if stop_type not in ['up', 'down']:
         return jsonify(Response(error=1, msg='stop type error').dumps())
